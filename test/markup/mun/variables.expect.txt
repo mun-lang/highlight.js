@@ -1,0 +1,2 @@
+<span class="hljs-k">let</span> foo;
+<span class="hljs-k">let</span> _foo_bar;
