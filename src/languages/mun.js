@@ -11,12 +11,11 @@ function(hljs) {
         // types
         'int float bool never';
 
-    var KEYWORDS =
-    {
-        keywords: 'break else false for fn if in null self super return true while loop ' +
+    var KEYWORDS = {
+        keyword: 'break else false for fn if in null self super return true while loop ' +
                   'let mut pub never ',
         literal: 'true false null',
-        built_ins: BUILTINS
+        built_in: BUILTINS
     }
         ;
     var NUMBERS = {
