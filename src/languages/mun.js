@@ -73,7 +73,7 @@ function(hljs) {
                     },
                     {
                         className: 'return',
-                        begin: /:/, end: /[{;]/,
+                        begin: /\s*:/, end: /[{;]/, endsWithParent: true,
                         excludeEnd: true,
                         keywords: KEYWORDS,
                         relevance: 0,
