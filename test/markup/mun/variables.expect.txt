@@ -1,2 +1,2 @@
-<span class="hljs-k">let</span> foo;
-<span class="hljs-k">let</span> _foo_bar;
+<span class="hljs-keyword">let</span> foo;
+<span class="hljs-keyword">let</span> _foo_bar;

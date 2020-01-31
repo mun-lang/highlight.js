@@ -1,0 +1,3 @@
+struct(gc) Foo {
+  foo: int
+}

@@ -12,8 +12,10 @@ function(hljs) {
         'int float bool never';
 
     var KEYWORDS = {
-        keyword: 'break else false for fn if in null self super return true while loop ' +
-                  'let mut pub never ',
+        keyword: 'and break do else for fn if in' +
+            'return while let mut struct class ' +
+            'never loop pub super self package ' + 
+            'extern',
         literal: 'true false null',
         built_in: BUILTINS
     }
@@ -41,7 +43,7 @@ function(hljs) {
         keywords: KEYWORDS,
         contains: [
             hljs.C_LINE_COMMENT_MODE,
-            hljs.C_BLOCK_COMMENT_MODE,
+            hljs.COMMENT('/\\*', '\\*/', {contains: ['self']}),
             hljs.QUOTE_STRING_MODE,
             STRING,
             NUMBERS,
@@ -68,7 +70,7 @@ function(hljs) {
                         contains: [
                             STRING,
                             NUMBERS,
-                            hljs.C_BLOCK_COMMENT_MODE
+                            hljs.COMMENT('/\\*', '\\*/', {contains: ['self']}),
                         ]
                     },
                     {
@@ -78,16 +80,24 @@ function(hljs) {
                         keywords: KEYWORDS,
                         relevance: 0,
                         contains: [
-                            hljs.C_BLOCK_COMMENT_MODE
+                            hljs.COMMENT('/\\*', '\\*/', {contains: ['self']}),
                         ]
                     },
                     hljs.C_LINE_COMMENT_MODE,
-                    hljs.C_BLOCK_COMMENT_MODE
+                    hljs.COMMENT('/\\*', '\\*/', {contains: ['self']}),
                 ]
             },
             {
                 begin: hljs.IDENT_RE + '::',
                 keywords: { built_in: BUILTINS }
+            },
+            {
+                className: 'class',
+                beginKeywords: 'struct', end: '{',
+                contains: [
+                    hljs.inherit(hljs.UNDERSCORE_TITLE_MODE, {endsParent: true})
+                ],
+                illegal: '[\\w\\d]'
             },
         ]
 
